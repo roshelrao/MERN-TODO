@@ -31,9 +31,9 @@ function TaskList() {
       let id = taskId;
       
       axios.delete(`https://mern-todo-beginner.herokuapp.com/todos/${id}`)
-      .then(response => console.log("Task deleted"));
+      .then(response => window.location.reload());
 
-      window.location.reload();
+      //window.location.reload();
     }
 
     const changeStatus = (taskId, status, task) => {

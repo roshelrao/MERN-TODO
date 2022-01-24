@@ -7,14 +7,14 @@ function TaskList() {
 
     const [todos, setTodos] = useState([]);
 
-    const getBooks = () => {
+    const getTodos = () => {
     axios.get('https://mern-todo-beginner.herokuapp.com/todos')
     .then(response => {return response})
     .then(tasks => setTodos(tasks.data))
     }
 
     useEffect(() => {
-      getBooks();
+      getTodos();
     }, []);
 
     const handleSubmit = (e) => {
@@ -24,14 +24,14 @@ function TaskList() {
       const todoStatus = "incomplete";
       
       axios.post('https://mern-todo-beginner.herokuapp.com/todos/add', {todo,todoStatus})
-      .then(response => window.location.reload());
+      .then(response => getTodos());
     }
 
     const deleteTask = (taskId) => {
       let id = taskId;
       
       axios.delete(`https://mern-todo-beginner.herokuapp.com/todos/${id}`)
-      .then(response => window.location.reload());
+      .then(response => getTodos());
     }
 
     const changeStatus = (taskId, status, task) => {
@@ -42,10 +42,10 @@ function TaskList() {
       if(todoStatus =="incomplete"){
         console.log("onclick incomplete working");
         axios.put(`https://mern-todo-beginner.herokuapp.com/todos/update/${id}`, {todo, todoStatus:"completed"})
-        .then(response => window.location.reload())
+        .then(response => getTodos())
       }else if(todoStatus === "completed"){
         axios.put(`https://mern-todo-beginner.herokuapp.com/todos/update/${id}`, {todo, todoStatus:"incomplete"})
-        .then(response => window.location.reload())
+        .then(response => getTodos())
       }
     }
 
@@ -55,7 +55,7 @@ function TaskList() {
       let todo = prompt("Enter new task", task);
 
       axios.put(`https://mern-todo-beginner.herokuapp.com/todos/update/${id}`, {todo, todoStatus})
-      .then(response => window.location.reload());
+      .then(response => getTodos());
     }
 
   return( 

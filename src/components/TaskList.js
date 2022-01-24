@@ -25,7 +25,7 @@ function TaskList() {
 
 
     const handleSubmit = (e) => {
-      e.preventDefault();
+      //e.preventDefault();
 
       const todo = e.target.task.value;
       const todoStatus = "incomplete";

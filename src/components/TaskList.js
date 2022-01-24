@@ -24,7 +24,7 @@ function TaskList() {
       const todoStatus = "incomplete";
       
       axios.post('https://mern-todo-beginner.herokuapp.com/todos/add', {todo,todoStatus})
-      .then(response => setAddedItem(response.data));
+      .then(response => console.log("item added"));
     }
 
     const deleteTask = (taskId) => {

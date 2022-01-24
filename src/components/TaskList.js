@@ -1,6 +1,6 @@
 import React , { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Button, Table, Row, Col } from 'react-bootstrap';
+import { Button, Table } from 'react-bootstrap';
 import './TaskList.css'
 
 function TaskList() {

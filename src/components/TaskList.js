@@ -6,7 +6,7 @@ import './TaskList.css'
 function TaskList() {
 
     const [todos, setTodos] = useState([]);
-    const [completed, setCompleted] = useState(false);
+    const [addedItem, setAddedItem] = useState('')
 
     const getBooks = () => {
     axios.get('https://mern-todo-beginner.herokuapp.com/todos')
@@ -17,6 +17,12 @@ function TaskList() {
     useEffect(() => {
       getBooks();
     }, []);
+    
+    useEffect(() => {
+      handleSubmit();
+    }, [addedItem]);
+
+
 
     const handleSubmit = (e) => {
       e.preventDefault();
@@ -25,9 +31,7 @@ function TaskList() {
       const todoStatus = "incomplete";
       
       axios.post('https://mern-todo-beginner.herokuapp.com/todos/add', {todo,todoStatus})
-      .then(response => console.log("Task added"));
-
-      window.location.reload();
+      .then(response => setAddedItem(response.data));
     }
 
     const deleteTask = (taskId) => {

@@ -73,26 +73,17 @@ function TaskList() {
 
     <Table striped bordered hover variant="dark">
       <tbody>
-    {todos.map((task) =>{
-      if(task.todoStatus == "incomplete"){
-        return(
+    {todos.map((task) =>(
         <tr>
-        <td>{task.todo}</td> 
+        {task.todoStatus == "incomplete" ? 
+        <td>{task.todo}</td> :
+        <td style={{textDecoration:"line-through"}}>{task.todo}</td> 
+      }
         <td><Button variant="outline-success" onClick={() => changeStatus(task._id, task.todoStatus, task.todo)}>{task.todoStatus}</Button></td>
         <td><Button variant="primary" onClick = {() => editTask(task._id, task.todoStatus, task.todo)}>Edit</Button></td>
         <td><Button variant="danger" value={task._id} onClick={() => {deleteTask(task._id)}}>Delete</Button></td>
         </tr>
-        )}
-      else{
-        return(
-          <tr>
-          <td style={{textDecoration:"line-through"}}>{task.todo}</td> 
-          <td><Button variant="outline-success" onClick={() => changeStatus(task._id, task.todoStatus, task.todo)}>{task.todoStatus}</Button></td>
-          <td><Button variant="primary" onClick = {() => editTask(task._id, task.todoStatus, task.todo)}>Edit</Button></td>
-          <td><Button variant="danger" value={task._id} onClick={() => {deleteTask(task._id)}}>Delete</Button></td>
-          </tr>
-        )}
-})}
+))}
     </tbody>
   </Table>
     </>

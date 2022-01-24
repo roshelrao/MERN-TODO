@@ -25,6 +25,8 @@ function TaskList() {
       
       axios.post('https://mern-todo-beginner.herokuapp.com/todos/add', {todo,todoStatus})
       .then(response => getTodos());
+
+      e.target.task.value=("");
     }
 
     const deleteTask = (taskId) => {

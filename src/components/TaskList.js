@@ -6,7 +6,6 @@ import './TaskList.css'
 function TaskList() {
 
     const [todos, setTodos] = useState([]);
-    const [addedItem, setAddedItem] = useState('')
 
     const getBooks = () => {
     axios.get('https://mern-todo-beginner.herokuapp.com/todos')
@@ -17,15 +16,9 @@ function TaskList() {
     useEffect(() => {
       getBooks();
     }, []);
-    
-    useEffect(() => {
-      handleSubmit();
-    }, [addedItem]);
-
-
 
     const handleSubmit = (e) => {
-      //e.preventDefault();
+      e.preventDefault();
 
       const todo = e.target.task.value;
       const todoStatus = "incomplete";

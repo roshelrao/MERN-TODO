@@ -9,7 +9,7 @@ function TaskList() {
     const [completed, setCompleted] = useState(false);
 
     const getBooks = () => {
-    axios.get('http://localhost:5000/todos')
+    axios.get('https://mern-todo-beginner.herokuapp.com/todos')
     .then(response => {return response})
     .then(tasks => setTodos(tasks.data))
     }
